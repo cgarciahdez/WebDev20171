@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	div.text-center
+		h1= title
+		h2 Visualize tweets!
+		p click on any tweet to go to the original!
+	div.text-center
+		for tweet in tweets
+			div.panel.panel-default.tweet(style="float:left")
+				a.tuit(href="https://twitter.com/"+tweet.user.screen_name+"/status/"+tweet.id_str)
+					div.panel-body.row
+						div.text-center.col-md-9
+							p #{tweet.text}
+						div.col-md-3
+							img(src=tweet.user.profile_image_url_https, style="height:70px;width:70px")
+				div.panel-footer
+						div.row
+							div.col-md-4
+								p #{tweet.user.name}
+							div.col-md-4
+								a(href="https://twitter.com/"+tweet.user.screen_name) @#{tweet.user.screen_name}
+							div.col-md-4
+								p #{tweet.created_at}
+								
